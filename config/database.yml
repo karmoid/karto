@@ -15,10 +15,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: karto_development
+  database: impact_production
   pool: 5
-  username: karto
-  password:
+  username: impact
+  password: impact
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -27,7 +27,7 @@ development:
   #port: 5432
 
   # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
+  # schema_search_path: myapp,public
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
@@ -38,18 +38,21 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
-  database: karto_test
+  database: impact_test
   pool: 5
-  username: karto
-  password:
+  username: impact
+  password: impact
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: karto_production
+  database: impact_production
   pool: 5
-  username: karto
-  password:
+  username: impact
+  password: impact
+
+cucumber:
+  <<: *test
