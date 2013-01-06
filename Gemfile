@@ -9,6 +9,7 @@ gem 'pg'
 
 group :development, :test do
 	gem 'rspec-rails'
+	gem 'guard-rspec'
 end
 
 # Gems used only for assets and not required
@@ -27,6 +28,11 @@ gem 'jquery-rails'
 
 group :test do
 	gem 'capybara'
+	gem 'rb-fchange'
+	gem 'rb-notifu'
+	gem 'win32console'
+	gem 'guard-spork'
+	gem 'spork'
 end
 
 # To use ActiveModel has_secure_password
