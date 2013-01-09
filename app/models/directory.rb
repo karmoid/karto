@@ -4,11 +4,13 @@ class Directory < ActiveRecord::Base
 
   belongs_to :parent, :class_name => 'Directory'  
   has_many :children, :inverse_of => :parent, :class_name => 'Directory', :foreign_key => "parent_id" 
+  has_many :leafs
+  has_many :collectors
 
 	def self.path_down(roots)
 		find_by_sql(%Q{
 			WITH RECURSIVE conx(level, path, id, parent_id) AS (
-				SELECT 1 as level, directories.parent_id||'/'||directories.id as path, directories.id, directories.parent_id FROM directories WHERE parent_id in (#{roots.join(',')})
+				SELECT 1 as level, ''||directories.id as path, directories.id, directories.parent_id FROM directories WHERE id in (#{roots.join(',')})
 				UNION
 				SELECT conx.level+1 as level, conx.path||'/'||directories.id as path, directories.id, directories.parent_id FROM directories, conx
 				WHERE conx.id = directories.parent_id

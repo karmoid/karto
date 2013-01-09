@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106194102) do
+ActiveRecord::Schema.define(:version => 20130107212422) do
+
+  create_table "collector_leafs", :force => true do |t|
+    t.integer "collector_id"
+    t.integer "leaf_id"
+  end
+
+  create_table "collector_trees", :force => true do |t|
+    t.integer "collector_id"
+    t.integer "child_id"
+  end
+
+  create_table "collectors", :force => true do |t|
+    t.string   "name"
+    t.string   "hr"
+    t.text     "note"
+    t.integer  "directory_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "directories", :force => true do |t|
     t.string   "name"
@@ -20,6 +39,15 @@ ActiveRecord::Schema.define(:version => 20130106194102) do
     t.integer  "parent_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "leafs", :force => true do |t|
+    t.string   "name"
+    t.string   "hr"
+    t.text     "note"
+    t.integer  "directory_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end
