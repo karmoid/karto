@@ -7,7 +7,13 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
-group :development, :test do
+group :development do
+	gem "cucumber-rails"
+	gem 'guard-cucumber'
+end
+
+group :test do
+	gem "wdm"
 	gem 'rspec-rails'
 	gem 'guard-rspec'
 end
@@ -33,6 +39,8 @@ group :test do
 	gem 'win32console'
 	gem 'guard-spork'
 	gem 'spork'
+	gem 'database_cleaner'
+	gem "webrat"
 end
 
 # To use ActiveModel has_secure_password

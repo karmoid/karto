@@ -3,7 +3,7 @@ class Directory < ActiveRecord::Base
   validates :hr, :name, :presence => true
 
   belongs_to :parent, :class_name => 'Directory'  
-  has_many :children, :inverse_of => :parent, :class_name => 'Directory', :foreign_key => "parent_id" 
+  has_many :directories, :inverse_of => :parent, :foreign_key => "parent_id" 
   has_many :leafs
   has_many :collectors
 
