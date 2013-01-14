@@ -10,7 +10,7 @@ class DirectoriesController < ApplicationController
 		if @directory.nil?
 			@directory = Directory.new
 		else
-			@directory = Directory.directories.build
+			@directory = @directory.directories.build
 		end	
 	end
 
@@ -18,9 +18,16 @@ class DirectoriesController < ApplicationController
 		directory_id = params[:directory_id] || -1
 		@directory = Directory.find(directory_id)
 		if @directory.nil?
-			@directory = Directory.new(params[:directory])
+			@directory = Directory.build(params[:directory])
 		else
-			@directory = Directory.directories.build(params[:directory])
+			@directory = @directory.directories.build(params[:directory])
+		end	
+		respond_to do |format|
+    		if @directory.save
+      			format.html  { redirect_to(@directory.parent, :notice => 'Directory was successfully created.') }
+    		else
+      			format.html  { render :action => "new" }
+    		end			
 		end	
 	end
 

@@ -1,6 +1,8 @@
 Karto::Application.routes.draw do
   resources :directories do
     resources :directories
+    resources :leafs
+    resources :collectors
   end
 
   get "welcome/index"
