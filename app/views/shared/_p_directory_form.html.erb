@@ -1,0 +1,32 @@
+<div class="form-vertical well">
+	<%= form_for directory,  :action => directory.id.blank? ? "create" : "update"  do |f| %>
+		<fieldset>
+			<legend><%= directory.id.blank? ? "Nouveau répertoire" : "Modification du répertoire #{directory.name}"%></legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">Nom</label>
+				<div class="controls">
+					<%= f.text_field :name, :class => "input-xlarge" %></br>
+					<p class="help-block">Ce code mnémonique est plus pratique que le nom complet.</p>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">Description</label>
+				<div class="controls">
+					<%= f.text_field :hr, :class => "input-xlarge" %></br>
+					<p class="help-block">Description courte.</p>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="textarea">Description longue</label>
+				<div class="controls">
+					<%= f.text_area :note, :class => "input-xlarge" %>
+				</div>
+			</div>
+			<div class="validation-error"></div>
+			<div class="form-actions">
+				<%= f.submit "Valider", :class => "btn btn-primary", :id => "new-item" %>
+				<%= link_to "Annuler", root_path %>
+			</div>
+		</fieldset>
+	<% end %>
+</div>

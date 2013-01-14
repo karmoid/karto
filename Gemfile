@@ -7,15 +7,11 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
-group :development do
-	gem "cucumber-rails"
-	gem 'guard-cucumber'
-end
-
 group :test do
 	gem "wdm"
 	gem 'rspec-rails'
 	gem 'guard-rspec'
+	gem "cucumber-rails", :require => false
 end
 
 # Gems used only for assets and not required
@@ -40,7 +36,6 @@ group :test do
 	gem 'guard-spork'
 	gem 'spork'
 	gem 'database_cleaner'
-	gem "webrat"
 end
 
 # To use ActiveModel has_secure_password

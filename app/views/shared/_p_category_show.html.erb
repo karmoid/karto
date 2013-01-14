@@ -1,0 +1,58 @@
+<div class="row span12">
+		<div class="span5">
+			<div class="nav-collapse">
+				<ul class="nav nav-pills">
+					<li><%= link_to raw('<i class="icon-home"></i> Accueil'), root_path, :class => directory.parent.nil? ? "active" : "enabled" %></li>
+					<% dir = directory.parent %>
+					<% out = "" %>
+					<% while (! dir.nil?) && (! dir.parent.nil?)do %>
+						<% out = '<li>'+link_to(h(dir.hr), dir)+'</li>' + out %>
+						<% dir = dir.parent %>
+					<% end %>	
+					<%= raw(out) %>
+					<% unless directory.parent.nil? %>
+						<li class="active"><%= link_to h(directory.hr), directory.parent %></li>
+					<% end %>	
+				</ul>	
+			</div>	
+			<%= render :partial => "shared/p_directory_form", :locals => {:directory => directory} %>
+		</div>	
+		<div class="span6">
+			<ul class="nav nav-pills pull-right">
+				<li><%= link_to raw('<i class="icon-plus icon-white"></i> Répertoire'), new_directory_directory_path(directory) %></li>
+				<li><a href="#"><i class="icon-plus icon-white"></i> Fichier</a></li>
+				<li><a href="#"><i class="icon-plus icon-white"></i> Collecteur</a></li>
+			</ul>
+			<table class="table table-bordered table-striped table-condensed table-hover">
+			    <thead>
+			    	<tr>
+				        <th></th>
+				    	<th>Modifié le</th>
+			    	</tr>
+			    </thead>
+			    <tbody>
+					<% directory.directories.each do |dir| %>
+					<tr>
+						<td>
+							<%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %>
+						</td>
+						<td><%= dir.updated_at %></td>
+					</tr>	
+					<% end %>
+					<% directory.leafs.each do |leaf| %>
+					<tr>
+						<td><i class="icon-leaf"></i><%= leaf.hr %></td>
+						<td><%= leaf.updated_at %></td>
+					</tr>	
+					<% end %>
+					<% directory.collectors.each do |collector| %>
+					<tr>
+						<td><i class="icon-briefcase"></i><%= collector.hr %></td>
+						<td><%= collector.updated_at %></td>
+					</tr>	
+					<% end %>
+			    </tbody>
+			</table>
+		</div>	
+	</div>
+</div>	

@@ -3,6 +3,7 @@ class Leaf < ActiveRecord::Base
   validates :hr, :name, :presence => true
 
   belongs_to :directory
+  has_many :collectors
 
 # Directory.path_down([1]).each do |d|
 # 	puts d.hr+" ("+d.path+")"
