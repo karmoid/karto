@@ -1,5 +1,5 @@
 class Directory < ActiveRecord::Base
-  attr_accessible :hr, :name, :note, :parent_id
+  attr_accessible :hr, :name, :note, :parent_id, :fav, :pin
   validates :hr, :name, :presence => true
 
   belongs_to :parent, :class_name => 'Directory'  

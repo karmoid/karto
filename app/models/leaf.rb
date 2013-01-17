@@ -1,5 +1,5 @@
 class Leaf < ActiveRecord::Base
-  attr_accessible :directory_id, :hr, :name, :note
+  attr_accessible :directory_id, :hr, :name, :note, :fav, :pin
   validates :hr, :name, :presence => true
 
   belongs_to :directory

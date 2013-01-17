@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107212422) do
+ActiveRecord::Schema.define(:version => 20130117211523) do
 
   create_table "collector_leafs", :force => true do |t|
     t.integer "collector_id"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(:version => 20130107212422) do
     t.string   "hr"
     t.text     "note"
     t.integer  "directory_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "fav",          :default => false
+    t.boolean  "pin",          :default => false
   end
 
   create_table "directories", :force => true do |t|
@@ -37,8 +39,10 @@ ActiveRecord::Schema.define(:version => 20130107212422) do
     t.string   "hr"
     t.text     "note"
     t.integer  "parent_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "fav",        :default => false
+    t.boolean  "pin",        :default => false
   end
 
   create_table "leafs", :force => true do |t|
@@ -46,8 +50,10 @@ ActiveRecord::Schema.define(:version => 20130107212422) do
     t.string   "hr"
     t.text     "note"
     t.integer  "directory_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "fav",          :default => false
+    t.boolean  "pin",          :default => false
   end
 
 end

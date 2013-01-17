@@ -1,8 +1,9 @@
 <div class="row span12">
-	<div class="span6">
-		<div class="nav-collapse">
-			<ul class="nav nav-pills">
-				<li><%= link_to raw('<i class="icon-home icon-white"></i> Accueil'), root_path, :class => directory.parent.nil? ? "active" : "enabled" %></li>
+	<div class="span4">
+		<div class="well" style="padding: 8px 0;">
+	        <ul class="nav nav-list">
+				<li class="nav-header">Contexte</li>
+				<li><%= link_to raw('<i class="icon-home"></i> Accueil'), root_path, :class => directory.parent.nil? ? "active" : "enabled" %></li>
 				<% dir = directory.parent %>
 				<% out = "" %>
 				<% while (! dir.nil?) && (! dir.parent.nil?)do %>
@@ -13,21 +14,37 @@
 				<% unless directory.parent.nil? %>
 					<li class="active"><%= link_to h(directory.hr), directory.parent %></li>
 				<% end %>	
-			</ul>	
-		</div>	
-	</div>	
-	<div class="span5">
-		<ul class="nav nav-pills pull-right">
-			<li><%= link_to raw('<i class="icon-plus icon-white"></i> Répertoire'), new_directory_directory_path(directory) %></li>
-			<li><%= link_to raw('<i class="icon-plus icon-white"></i> Fichier'), new_directory_leaf_path(directory) %></li>
-			<li><%= link_to raw('<i class="icon-plus icon-white"></i> Collecteur'), new_directory_collector_path(directory) %></li>
-		</ul>
-	</div>
-</div>			
-<div class="row span12">
-	<div class="span3">
-	</div>
-	<div class="span8">
+				<li class="divider"></li>
+				<li class="nav-header"><i class="icon-plus"></i> Ajouts</li>
+				<li><%= link_to "Répertoire", new_directory_directory_path(directory) %></li>
+				<li><%= link_to "Fichier", new_directory_leaf_path(directory) %></li>
+				<li><%= link_to "Collecteur", new_directory_collector_path(directory) %></li>
+				<li class="divider"></li>
+				<li class="nav-header"><i class="icon-tags"></i> Favoris</li>
+					<% favs[0].each do |dir| %>
+						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
+					<% end %>
+					<% favs[1].each do |col| %>
+						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), directory %></li>
+					<% end %>
+					<% favs[2].each do |leaf| %>
+						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), directory %></li>
+					<% end %>
+				<li class="divider"></li>
+				<li class="nav-header"><i class="icon-tags"></i> Lots</li>
+					<% pins[0].each do |dir| %>
+						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
+					<% end %>
+					<% pins[1].each do |col| %>
+						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), directory %></li>
+					<% end %>
+					<% pins[2].each do |leaf| %>
+						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), directory %></li>
+					<% end %>
+	        </ul>
+	      </div>		
+		</div>
+	<div class="span7">
 		<table class="table table-bordered table-striped table-condensed table-hover">
 		    <thead>
 		    	<tr>
@@ -39,20 +56,20 @@
 				<% directory.directories.each do |dir| %>
 				<tr>
 					<td>
-						<%= link_to raw('<i class="icon-folder-open icon-white"></i> '+h(dir.hr)), dir %>
+						<%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %>
 					</td>
 					<td><%= dir.updated_at %></td>
 				</tr>	
 				<% end %>
 				<% directory.leafs.each do |leaf| %>
 				<tr>
-					<td><i class="icon-leaf icon-white"></i> <%= leaf.hr %></td>
+					<td><i class="icon-leaf"></i> <%= leaf.hr %></td>
 					<td><%= leaf.updated_at %></td>
 				</tr>	
 				<% end %>
 				<% directory.collectors.each do |collector| %>
 				<tr>
-					<td><i class="icon-briefcase icon-white"></i> <%= collector.hr %></td>
+					<td><i class="icon-briefcase"></i> <%= collector.hr %></td>
 					<td><%= collector.updated_at %></td>
 				</tr>	
 				<% end %>
