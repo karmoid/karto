@@ -2,7 +2,7 @@
 	<div class="span6">
 		<div class="nav-collapse">
 			<ul class="nav nav-pills">
-				<li><%= link_to raw('<i class="icon-home"></i> Accueil'), root_path, :class => directory.parent.nil? ? "active" : "enabled" %></li>
+				<li><%= link_to raw('<i class="icon-home icon-white"></i> Accueil'), root_path, :class => directory.parent.nil? ? "active" : "enabled" %></li>
 				<% dir = directory.parent %>
 				<% out = "" %>
 				<% while (! dir.nil?) && (! dir.parent.nil?)do %>
@@ -39,20 +39,20 @@
 				<% directory.directories.each do |dir| %>
 				<tr>
 					<td>
-						<%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %>
+						<%= link_to raw('<i class="icon-folder-open icon-white"></i> '+h(dir.hr)), dir %>
 					</td>
 					<td><%= dir.updated_at %></td>
 				</tr>	
 				<% end %>
 				<% directory.leafs.each do |leaf| %>
 				<tr>
-					<td><i class="icon-leaf"></i><%= leaf.hr %></td>
+					<td><i class="icon-leaf icon-white"></i> <%= leaf.hr %></td>
 					<td><%= leaf.updated_at %></td>
 				</tr>	
 				<% end %>
 				<% directory.collectors.each do |collector| %>
 				<tr>
-					<td><i class="icon-briefcase"></i><%= collector.hr %></td>
+					<td><i class="icon-briefcase icon-white"></i> <%= collector.hr %></td>
 					<td><%= collector.updated_at %></td>
 				</tr>	
 				<% end %>
