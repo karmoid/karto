@@ -43,5 +43,13 @@ class DirectoriesController < ApplicationController
 	end
 
 	def update
+		@directory = Directory.find(params[:id])
+		respond_to do |format|
+			if @directory.update_attributes(params[:directory])  
+				format.html { redirect_to(@directory.parent, :notice => 'Directory was successfully updated.') } 
+			else	
+				format.html { redirect_to(@directory.parent, :notice => "Directory wasn't successfully updated.") }
+			end
+		end
 	end
 end

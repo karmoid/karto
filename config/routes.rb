@@ -5,6 +5,9 @@ Karto::Application.routes.draw do
     resources :collectors
   end
 
+  resources :leafs
+  resources :collectors
+
   get "welcome/index"
 
   get "static_pages/home"

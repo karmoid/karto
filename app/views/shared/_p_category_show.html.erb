@@ -25,10 +25,10 @@
 						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
 					<% end %>
 					<% favs[1].each do |col| %>
-						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), directory %></li>
+						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
 					<% end %>
 					<% favs[2].each do |leaf| %>
-						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), directory %></li>
+						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
 					<% end %>
 				<li class="divider"></li>
 				<li class="nav-header"><i class="icon-tags"></i> Lots</li>
@@ -36,10 +36,10 @@
 						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
 					<% end %>
 					<% pins[1].each do |col| %>
-						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), directory %></li>
+						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
 					<% end %>
 					<% pins[2].each do |leaf| %>
-						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), directory %></li>
+						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
 					<% end %>
 	        </ul>
 	      </div>		
@@ -56,20 +56,20 @@
 				<% directory.directories.each do |dir| %>
 				<tr>
 					<td>
-						<%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %>
+						<%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %> <%= link_to raw('<i class="icon-star'+(dir.fav ? "" : "-empty")+'"></i>'), directory_path(dir, "directory[fav]" => ! dir.fav), :method => :put %> <%= link_to raw('<i class="icon-tag'+(dir.pin ? "s" : "")+'"></i>'), directory_path(dir, "directory[pin]" => ! dir.pin), :method => :put %>
 					</td>
 					<td><%= dir.updated_at %></td>
 				</tr>	
 				<% end %>
 				<% directory.leafs.each do |leaf| %>
 				<tr>
-					<td><i class="icon-leaf"></i> <%= leaf.hr %></td>
+					<td><i class="icon-leaf"></i><%= leaf.hr %> <%= link_to raw('<i class="icon-star'+(leaf.fav ? "" : "-empty")+'"></i>'), leaf_path(leaf, "leaf[fav" => ! leaf.fav), :method => :put %> <%= link_to raw('<i class="icon-tag'+(leaf.pin ? "s" : "")+'"></i>'), leaf_path(leaf, "leaf[pin" => ! leaf.pin), :method => :put %></td>
 					<td><%= leaf.updated_at %></td>
 				</tr>	
 				<% end %>
 				<% directory.collectors.each do |collector| %>
 				<tr>
-					<td><i class="icon-briefcase"></i> <%= collector.hr %></td>
+					<td><i class="icon-briefcase"></i> <%= collector.hr %> <%= link_to raw('<i class="icon-star'+(collector.fav ? "" : "-empty")+'"></i>'), collector_path(collector, "collector[fav" => ! collector.fav), :method => :put %> <%= link_to raw('<i class="icon-tag'+(collector.pin ? "s" : "")+'"></i>'), collector_path(collector, "collector[pin" => ! collector.pin), :method => :put %></td>
 					<td><%= collector.updated_at %></td>
 				</tr>	
 				<% end %>

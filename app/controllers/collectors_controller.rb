@@ -31,5 +31,13 @@ class CollectorsController < ApplicationController
 	end
 
 	def update
+		@collector = ActiveRecord::Base::Collector.find(params[:id])
+		respond_to do |format|
+			if @collector.update_attributes(params[:collector])  
+				format.html { redirect_to(@collector.directory, :notice => 'Collector was successfully updated.') } 
+			else	
+				format.html { redirect_to(@collector.directory, :notice => "Collector wasn't successfully updated.") }
+			end
+		end
 	end
 end

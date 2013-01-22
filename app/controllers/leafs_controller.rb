@@ -31,5 +31,13 @@ class LeafsController < ApplicationController
 	end
 
 	def update
+		@leaf = Leaf.find(params[:id])
+		respond_to do |format|
+			if @leaf.update_attributes(params[:leaf])  
+				format.html { redirect_to(@leaf.directory, :notice => 'Leaf was successfully updated.') } 
+			else	
+				format.html { redirect_to(@leaf.directory, :notice => "Leaf wasn't successfully updated.") }
+			end
+		end
 	end
 end
