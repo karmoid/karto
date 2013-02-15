@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117211523) do
+ActiveRecord::Schema.define(:version => 20130208070857) do
 
   create_table "collector_leafs", :force => true do |t|
     t.integer "collector_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130117211523) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "fav",          :default => false
     t.boolean  "pin",          :default => false
+    t.integer  "layer_id"
   end
 
   create_table "directories", :force => true do |t|
@@ -43,6 +44,15 @@ ActiveRecord::Schema.define(:version => 20130117211523) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "fav",        :default => false
     t.boolean  "pin",        :default => false
+    t.integer  "layer_id"
+  end
+
+  create_table "layers", :force => true do |t|
+    t.string   "name"
+    t.string   "hr"
+    t.text     "note"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "leafs", :force => true do |t|
@@ -54,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130117211523) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "fav",          :default => false
     t.boolean  "pin",          :default => false
+    t.integer  "layer_id"
   end
 
 end

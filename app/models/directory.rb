@@ -2,7 +2,8 @@ class Directory < ActiveRecord::Base
   attr_accessible :hr, :name, :note, :parent_id, :fav, :pin
   validates :hr, :name, :presence => true
 
-  belongs_to :parent, :class_name => 'Directory'  
+  belongs_to :parent, :class_name => 'Directory' 
+  belongs_to :layer 
   has_many :directories, :inverse_of => :parent, :foreign_key => "parent_id" 
   has_many :leafs
   has_many :collectors

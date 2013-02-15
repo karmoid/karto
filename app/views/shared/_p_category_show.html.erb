@@ -9,26 +9,37 @@
 					<li><%= link_to "Collecteur", new_directory_collector_path(directory) %></li>
 					<li class="divider"></li>
 					<li class="nav-header"><i class="icon-tags"></i> Favoris</li>
-						<% favs[0].each do |dir| %>
-							<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
-						<% end %>
-						<% favs[1].each do |col| %>
-							<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
-						<% end %>
-						<% favs[2].each do |leaf| %>
-							<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
-						<% end %>
+					<% favs[0].each do |dir| %>
+						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
+					<% end %>
+					<% favs[1].each do |col| %>
+						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
+					<% end %>
+					<% favs[2].each do |leaf| %>
+						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
+					<% end %>
 					<li class="divider"></li>
 					<li class="nav-header"><i class="icon-tags"></i> Lots</li>
-						<% pins[0].each do |dir| %>
-							<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
-						<% end %>
-						<% pins[1].each do |col| %>
-							<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
-						<% end %>
-						<% pins[2].each do |leaf| %>
-							<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
-						<% end %>
+					<% pins[0].each do |dir| %>
+						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
+					<% end %>
+					<% pins[1].each do |col| %>
+						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
+					<% end %>
+					<% pins[2].each do |leaf| %>
+						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
+					<% end %>
+					<li class="divider"></li>
+					<li class="nav-header">Nouveautés</li>
+					<% pins[0].each do |dir| %>
+						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
+					<% end %>
+					<% pins[1].each do |col| %>
+						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
+					<% end %>
+					<% pins[2].each do |leaf| %>
+						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
+					<% end %>
 		        </ul>
 		    </div>	
 		</div>    
