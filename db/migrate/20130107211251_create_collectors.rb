@@ -1,6 +1,6 @@
 class CreateCollectors < ActiveRecord::Migration
   def change
-    create_table :collectors do |t|
+    create_table :lassos do |t|
       t.string :name
       t.string :hr
       t.text :note
