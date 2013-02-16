@@ -36,6 +36,11 @@ class LeafsController < ApplicationController
 	end
 
 	def edit
+		directory_id = params[:directory_id]
+		@directory = Directory.find(directory_id)
+		unless @directory.nil?
+			@leaf = @directory.leafs.find(params[:id])
+		end	
 	end
 
 	def update

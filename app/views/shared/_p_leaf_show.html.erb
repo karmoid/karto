@@ -18,10 +18,15 @@
 		    	</ul>
 		    </div>	
 		    <div class="row">
-				<div>
 			      <h3><%= leaf.hr %></h3>
-			      <p><%= leaf.note %></p>
-			      <p><%= leaf.name %></p>
+		    </div>
+		    <div class="row">
+				<div class="span3">
+			      <i class="icon-leaf"></i> <%= leaf.name %>
+					<%= link_to raw(' <i class="icon-edit"></i>'), [:edit, leaf.directory, leaf] %>			      
+			    </div>
+			    <div class="span6">  
+			      <strong><%= leaf.note %></strong>
 			    </div>		    
 		    </div>
 		    <div class="row">

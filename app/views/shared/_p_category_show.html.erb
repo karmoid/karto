@@ -4,19 +4,29 @@
 		<div class="span9">
 			<div class="row">
 				<ul class="breadcrumb">
-					<li><%= link_to raw('<i class="icon-home"></i> Accueil'), root_path, :class => directory.parent.nil? ? "active" : "enabled" %><span class="divider">/</span></li>
+					<li><%= link_to raw('<i class="icon-home"></i> Accueil'), root_path, :class => directory.parent.nil? ? "active" : "enabled" %>
+						</li>
 					<% dir = directory.parent %>
 					<% out = "" %>
 					<% while (! dir.nil?) && (! dir.parent.nil?)do %>
-						<% out = '<li>'+link_to(h(dir.hr), dir)+'<span class="divider">/</span></li>' + out %>
+						<% out = '<li><span class="divider">/</span>'+link_to(h(dir.hr), dir)+'</li>' + out %>
 						<% dir = dir.parent %>
 					<% end %>	
 					<%= raw(out) %>
-					<% unless directory.parent.nil? %>
-						<li class="active"><%= link_to h(directory.hr), directory.parent %><span class="divider">/</span></li>
+					<% unless false || directory.parent.nil? %>
+						<li class="active"><span class="divider">/</span><%= link_to h(directory.hr), directory.parent %></li>
 					<% end %>	
 		    	</ul>
 		    </div>	
+		    <div class="row">
+				<div class="span3">
+			      <i class="icon-folder-open"></i> <%= directory.name %>
+					<%= link_to raw(' <i class="icon-edit"></i>'), [:edit, directory] %>			      
+			    </div>
+			    <div class="span6">  
+			      <strong><%= directory.note %></strong>
+			    </div>		    
+		    </div>
 		    <div class="row">
 				<div class="span4">
 					<table class="table table-bordered table-striped table-condensed table-hover">

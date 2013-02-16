@@ -40,6 +40,8 @@ class DirectoriesController < ApplicationController
 	end
 
 	def edit
+		directory_id = params[:id]
+		@directory = Directory.find(directory_id)
 	end
 
 	def update

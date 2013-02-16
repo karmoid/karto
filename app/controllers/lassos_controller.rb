@@ -36,10 +36,15 @@ class LassosController < ApplicationController
 	end
 
 	def edit
+		directory_id = params[:directory_id]
+		@directory = Directory.find(directory_id)
+		unless @directory.nil?
+			@lasso = @directory.lassos.find(params[:id])
+		end	
 	end
 
 	def update
-		@lasso = ActiveRecord::Base::Lasso.find(params[:id])
+		@lasso = Lasso.find(params[:id])
 		respond_to do |format|
 			if @lasso.update_attributes(params[:lasso])  
 				format.html { redirect_to(@lasso.directory, :notice => 'Lasso was successfully updated.') } 

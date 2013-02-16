@@ -18,10 +18,15 @@
 		    	</ul>
 		    </div>	
 		    <div class="row">
-				<div>
 			      <h3><%= lasso.hr %></h3>
-			      <p><%= lasso.note %></p>
-			      <p><%= lasso.name %></p>
+		    </div>
+		    <div class="row">
+				<div class="span3">
+			      <i class="icon-briefcase"></i> <%= lasso.name %>
+					<%= link_to raw(' <i class="icon-edit"></i>'), [:edit, lasso.directory, lasso] %>			      
+			    </div>
+			    <div class="span6">  
+			      <strong><%= lasso.note %></strong>
 			    </div>		    
 		    </div>
 		    <div class="row">
