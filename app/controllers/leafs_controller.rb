@@ -2,6 +2,14 @@ class LeafsController < ApplicationController
 	def show
 		leaf_id = params[:id]
 		@leaf = Leaf.find(leaf_id)
+		@favs = []
+		@pins = []
+		@favs << Directory.where(:fav => true)
+		@pins << Directory.where(:pin => true)
+		@favs << Lasso.where(:fav => true)
+		@pins << Lasso.where(:pin => true)
+		@favs << Leaf.where(:fav => true)
+		@pins << Leaf.where(:pin => true)
 	end
 
 	def new

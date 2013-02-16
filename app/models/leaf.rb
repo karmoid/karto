@@ -5,7 +5,9 @@ class Leaf < ActiveRecord::Base
   belongs_to :directory
   belongs_to :layer 
   
-  has_many :collectors
+  has_many :collector_leafs
+  has_many :lassos, :through => :collector_leafs
+
 
 # Directory.path_down([1]).each do |d|
 # 	puts d.hr+" ("+d.path+")"

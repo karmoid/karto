@@ -1,7 +1,7 @@
 <div class="form-vertical well">
-	<%= form_for [parent, collector], :action => collector.id.blank? ? "create" : "update"  do |f| %>
+	<%= form_for [parent, lasso], :action => lasso.id.blank? ? "create" : "update"  do |f| %>
 		<fieldset>
-			<legend><%= collector.id.blank? ? "Nouveau fichier" : "Modification du fichier #{collector.name}"%></legend>
+			<legend><%= lasso.id.blank? ? "Nouveau fichier" : "Modification du fichier #{lasso.name}"%></legend>
 			<div class="control-group">
 				<label class="control-label" for="input01">Nom</label>
 				<div class="controls">

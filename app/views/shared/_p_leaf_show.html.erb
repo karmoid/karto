@@ -1,0 +1,51 @@
+<div>
+	<div class="row">
+		<%= render :partial => "shared/p_pins_show", :locals => {:directory => leaf.directory, :favs => @favs, :pins => @pins } %>		
+		<div class="span9">
+			<div class="row">
+				<ul class="breadcrumb">
+					<li><%= link_to raw('<i class="icon-home"></i> Accueil'), root_path, :class => leaf.directory.parent.nil? ? "active" : "enabled" %><span class="divider">/</span></li>
+					<% dir = leaf.directory.parent %>
+					<% out = "" %>
+					<% while (! dir.nil?) && (! dir.parent.nil?)do %>
+						<% out = '<li>'+link_to(h(dir.hr), dir)+'<span class="divider">/</span></li>' + out %>
+						<% dir = dir.parent %>
+					<% end %>	
+					<%= raw(out) %>
+					<% unless leaf.directory.parent.nil? %>
+						<li class="active"><%= link_to h(leaf.directory.hr), leaf.directory.parent %><span class="divider">/</span></li>
+					<% end %>	
+		    	</ul>
+		    </div>	
+		    <div class="row">
+				<div>
+			      <h3><%= leaf.hr %></h3>
+			      <p><%= leaf.note %></p>
+			      <p><%= leaf.name %></p>
+			    </div>		    
+		    </div>
+		    <div class="row">
+				<table class="table table-bordered table-striped table-hover">
+				    <thead>
+				      <tr>
+				        <th>#</th>
+				        <th>Nom</th>
+				        <th>Description</th>
+				        <th>Note</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+					<% leaf.lassos.each do |l| %>
+						<tr>
+					    	<td><%= l.id %></td>
+					    	<td><%= l.name %></td>
+					    	<td><%= l.hr %></td>
+					    	<td><%= l.note %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+		    </div>	
+		</div>	
+	</div>	
+</div>	

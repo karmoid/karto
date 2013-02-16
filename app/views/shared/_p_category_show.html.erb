@@ -1,48 +1,6 @@
 <div>
 	<div class="row">
-		<div class="span3">
-			<div class="" style="padding: 8px 0;">
-		        <ul class="nav nav-list">
-					<li class="nav-header"><i class="icon-plus"></i> Ajouts</li>
-					<li><%= link_to "Répertoire", new_directory_directory_path(directory) %></li>
-					<li><%= link_to "Fichier", new_directory_leaf_path(directory) %></li>
-					<li><%= link_to "Collecteur", new_directory_collector_path(directory) %></li>
-					<li class="divider"></li>
-					<li class="nav-header"><i class="icon-tags"></i> Favoris</li>
-					<% favs[0].each do |dir| %>
-						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
-					<% end %>
-					<% favs[1].each do |col| %>
-						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
-					<% end %>
-					<% favs[2].each do |leaf| %>
-						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
-					<% end %>
-					<li class="divider"></li>
-					<li class="nav-header"><i class="icon-tags"></i> Lots</li>
-					<% pins[0].each do |dir| %>
-						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
-					<% end %>
-					<% pins[1].each do |col| %>
-						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
-					<% end %>
-					<% pins[2].each do |leaf| %>
-						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
-					<% end %>
-					<li class="divider"></li>
-					<li class="nav-header">Nouveautés</li>
-					<% pins[0].each do |dir| %>
-						<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
-					<% end %>
-					<% pins[1].each do |col| %>
-						<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col.directory %></li>
-					<% end %>
-					<% pins[2].each do |leaf| %>
-						<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf.directory %></li>
-					<% end %>
-		        </ul>
-		    </div>	
-		</div>    
+		<%= render :partial => "shared/p_pins_show", :locals => {:directory => @directory, :favs => @favs, :pins => @pins } %>		
 		<div class="span9">
 			<div class="row">
 				<ul class="breadcrumb">
@@ -88,12 +46,12 @@
 					    <tbody>
 							<% directory.leafs.each do |leaf| %>
 							<tr>
-								<td><i class="icon-leaf"></i> <%= leaf.hr %> <%= link_to raw('<i class="icon-star'+(leaf.fav ? "" : "-empty")+'"></i>'), leaf_path(leaf, "leaf[fav" => ! leaf.fav), :method => :put %> <%= link_to raw('<i class="icon-tag'+(leaf.pin ? "s" : "")+'"></i>'), leaf_path(leaf, "leaf[pin" => ! leaf.pin), :method => :put %></td>
+								<td><i class="icon-leaf"></i> <%= link_to leaf.hr, leaf %> <%= link_to raw('<i class="icon-star'+(leaf.fav ? "" : "-empty")+'"></i>'), leaf_path(leaf, "leaf[fav" => ! leaf.fav), :method => :put %> <%= link_to raw('<i class="icon-tag'+(leaf.pin ? "s" : "")+'"></i>'), leaf_path(leaf, "leaf[pin" => ! leaf.pin), :method => :put %></td>
 							</tr>	
 							<% end %>
-							<% directory.collectors.each do |collector| %>
+							<% directory.lassos.each do |lasso| %>
 							<tr>
-								<td><i class="icon-briefcase"></i> <%= collector.hr %> <%= link_to raw('<i class="icon-star'+(collector.fav ? "" : "-empty")+'"></i>'), collector_path(collector, "collector[fav" => ! collector.fav), :method => :put %> <%= link_to raw('<i class="icon-tag'+(collector.pin ? "s" : "")+'"></i>'), collector_path(collector, "collector[pin" => ! collector.pin), :method => :put %></td>
+								<td><i class="icon-briefcase"></i> <%= link_to lasso.hr, lasso %> <%= link_to raw('<i class="icon-star'+(lasso.fav ? "" : "-empty")+'"></i>'), lasso_path(lasso, "lasso[fav" => ! lasso.fav), :method => :put %> <%= link_to raw('<i class="icon-tag'+(lasso.pin ? "s" : "")+'"></i>'), lasso_path(lasso, "lasso[pin" => ! lasso.pin), :method => :put %></td>
 							</tr>	
 							<% end %>
 					    </tbody>

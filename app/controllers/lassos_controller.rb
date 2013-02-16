@@ -1,14 +1,22 @@
-class CollectorsController < ApplicationController
+class LassosController < ApplicationController
 	def show
-		collector_id = params[:id]
-		@collector = Collector.find(collector_id)
+		lasso_id = params[:id]
+		@lasso = Lasso.find(lasso_id)
+		@favs = []
+		@pins = []
+		@favs << Directory.where(:fav => true)
+		@pins << Directory.where(:pin => true)
+		@favs << Lasso.where(:fav => true)
+		@pins << Lasso.where(:pin => true)
+		@favs << Leaf.where(:fav => true)
+		@pins << Leaf.where(:pin => true)
 	end
 
 	def new
 		directory_id = params[:directory_id]
 		@directory = Directory.find(directory_id)
 		unless @directory.nil?
-			@collector = @directory.collectors.build
+			@lasso = @directory.lassos.build
 		end	
 	end
 
@@ -16,11 +24,11 @@ class CollectorsController < ApplicationController
 		directory_id = params[:directory_id] || -1
 		@directory = Directory.find(directory_id)
 		unless @directory.nil?
-			@collector = @directory.collectors.build(params[:collector])
+			@lasso = @directory.lassos.build(params[:lasso])
 		end	
 		respond_to do |format|
-    		if @collector.save
-      			format.html  { redirect_to(@directory, :notice => 'Collector was successfully created.') }
+    		if @lasso.save
+      			format.html  { redirect_to(@directory, :notice => 'Lasso was successfully created.') }
     		else
       			format.html  { render :action => "new" }
     		end			
@@ -31,12 +39,12 @@ class CollectorsController < ApplicationController
 	end
 
 	def update
-		@collector = ActiveRecord::Base::Collector.find(params[:id])
+		@lasso = ActiveRecord::Base::Lasso.find(params[:id])
 		respond_to do |format|
-			if @collector.update_attributes(params[:collector])  
-				format.html { redirect_to(@collector.directory, :notice => 'Collector was successfully updated.') } 
+			if @lasso.update_attributes(params[:lasso])  
+				format.html { redirect_to(@lasso.directory, :notice => 'Lasso was successfully updated.') } 
 			else	
-				format.html { redirect_to(@collector.directory, :notice => "Collector wasn't successfully updated.") }
+				format.html { redirect_to(@lasso.directory, :notice => "Lasso wasn't successfully updated.") }
 			end
 		end
 	end

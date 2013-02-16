@@ -1,6 +1,6 @@
 class CollectorLeaf < ActiveRecord::Base
-  attr_accessible :collector_id, :leaf_id
+  attr_accessible :lasso_id, :leaf_id
 
-  belongs_to :collector
+  belongs_to :lasso
   belongs_to :leaf
 end

@@ -1,6 +1,6 @@
 class CollectorTree < ActiveRecord::Base
-  attr_accessible :child_id, :collector_id
+  attr_accessible :child_id, :lasso_id
 
-  belongs_to :collector
-  belongs_to :child, :class_name => "Collector"
+  belongs_to :lasso
+  belongs_to :child, :class_name => "Lasso"
 end

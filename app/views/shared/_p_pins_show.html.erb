@@ -1,0 +1,32 @@
+<div class="span3">
+	<div class="" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+			<li class="nav-header"><i class="icon-plus"></i> Ajouts</li>
+			<li><%= link_to "Répertoire", new_directory_directory_path(directory) %></li>
+			<li><%= link_to "Fichier", new_directory_leaf_path(directory) %></li>
+			<li><%= link_to "Collecteur", new_directory_lasso_path(directory) %></li>
+			<li class="divider"></li>
+			<li class="nav-header"><i class="icon-tags"></i> Favoris</li>
+			<% favs[0].each do |dir| %>
+				<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
+			<% end %>
+			<% favs[1].each do |col| %>
+				<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col %></li>
+			<% end %>
+			<% favs[2].each do |leaf| %>
+				<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf %></li>
+			<% end %>
+			<li class="divider"></li>
+			<li class="nav-header"><i class="icon-tags"></i> Lots</li>
+			<% pins[0].each do |dir| %>
+				<li><%= link_to raw('<i class="icon-folder-open"></i> '+h(dir.hr)), dir %></li>
+			<% end %>
+			<% pins[1].each do |col| %>
+				<li><%= link_to raw('<i class="icon-briefcase"></i> '+h(col.hr)), col %></li>
+			<% end %>
+			<% pins[2].each do |leaf| %>
+				<li><%= link_to raw('<i class="icon-leaf"></i> '+h(leaf.hr)), leaf %></li>
+			<% end %>
+        </ul>
+    </div>	
+</div>    

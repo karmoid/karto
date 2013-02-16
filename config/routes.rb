@@ -2,11 +2,11 @@ Karto::Application.routes.draw do
   resources :directories do
     resources :directories
     resources :leafs
-    resources :collectors
+    resources :lassos
   end
 
   resources :leafs
-  resources :collectors
+  resources :lassos
 
   get "welcome/index"
 

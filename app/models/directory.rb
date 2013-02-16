@@ -6,7 +6,7 @@ class Directory < ActiveRecord::Base
   belongs_to :layer 
   has_many :directories, :inverse_of => :parent, :foreign_key => "parent_id" 
   has_many :leafs
-  has_many :collectors
+  has_many :lassos
 
 	def self.path_down(roots)
 		find_by_sql(%Q{
