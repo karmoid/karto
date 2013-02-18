@@ -13,16 +13,25 @@
 						<% dir = dir.parent %>
 					<% end %>	
 					<%= raw(out) %>
-					<% unless false || directory.parent.nil? %>
-						<li class="active"><span class="divider">/</span><%= link_to h(directory.hr), directory.parent %></li>
+					<% unless directory.parent.nil? %>
+						<li class="active"><span class="divider">/</span><%= link_to h(directory.hr), directory %></li>
 					<% end %>	
 		    	</ul>
 		    </div>	
 		    <div class="row">
 				<div class="span3">
-			      <i class="icon-folder-open"></i> <%= directory.name %>
-					<%= link_to raw(' <i class="icon-edit"></i>'), [:edit, directory] %>			      
-			    </div>
+					<div>
+			    		<span class="label label-info"><i class="icon-folder-open icon-white"></i> <%= directory.name %>
+						<%= link_to raw(' <i class="icon-edit icon-white"></i>'), [:edit, directory] %></span>
+			    	</div>
+					<div>
+						<span class="label">créé le <%= directory.created_at.strftime("%m-%e-%y %H:%M") %>
+						<% unless directory.created_at == directory.updated_at %>
+							<br/>modif. le <%= directory.updated_at.strftime("%m-%e-%y %H:%M") %>
+						<% end %>	
+						</span>
+					</div>
+				</div>	 
 			    <div class="span6">  
 			      <strong><%= directory.note %></strong>
 			    </div>		    

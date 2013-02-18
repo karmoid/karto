@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 	def index
-  		@directory = Directory.first
+  		@directory = Directory.find_by_name("root")
 		@favs = []
 		@pins = []
 		@favs << Directory.where(:fav => true)

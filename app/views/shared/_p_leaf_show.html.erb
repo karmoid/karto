@@ -22,8 +22,17 @@
 		    </div>
 		    <div class="row">
 				<div class="span3">
-			      <i class="icon-leaf"></i> <%= leaf.name %>
-					<%= link_to raw(' <i class="icon-edit"></i>'), [:edit, leaf.directory, leaf] %>			      
+					<div>
+						<span class="label label-info"><i class="icon-leaf icon-white"></i> <%= leaf.name %>
+						<%= link_to raw(' <i class="icon-edit icon-white"></i>'), [:edit, leaf.directory, leaf] %></span>
+					</div>
+					<div>
+						<span class="label">créé le <%= leaf.created_at.strftime("%m-%e-%y %H:%M") %>
+						<% unless leaf.created_at == leaf.updated_at %>
+							<br/>modif. le <%= leaf.updated_at.strftime("%m-%e-%y %H:%M") %>
+						<% end %>	
+						</span>
+					</div>	 
 			    </div>
 			    <div class="span6">  
 			      <strong><%= leaf.note %></strong>

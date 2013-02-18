@@ -22,9 +22,18 @@
 		    </div>
 		    <div class="row">
 				<div class="span3">
-			      <i class="icon-briefcase"></i> <%= lasso.name %>
-					<%= link_to raw(' <i class="icon-edit"></i>'), [:edit, lasso.directory, lasso] %>			      
-			    </div>
+					<div>
+			    		<span class="label label-info"><i class="icon-briefcase icon-white"></i> <%= lasso.name %>
+						<%= link_to raw(' <i class="icon-edit icon-white"></i>'), [:edit, lasso.directory, lasso] %></span>
+			    	</div>
+					<div>
+						<span class="label">créé le <%= lasso.created_at.strftime("%m-%e-%y %H:%M") %>
+						<% unless lasso.created_at == lasso.updated_at %>
+							<br/>modif. le <%= lasso.updated_at.strftime("%m-%e-%y %H:%M") %>
+						<% end %>	
+						</span>
+					</div>
+				</div>	 
 			    <div class="span6">  
 			      <strong><%= lasso.note %></strong>
 			    </div>		    
