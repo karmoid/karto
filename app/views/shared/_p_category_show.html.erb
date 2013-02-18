@@ -25,9 +25,9 @@
 						<%= link_to raw(' <i class="icon-edit icon-white"></i>'), [:edit, directory] %></span>
 			    	</div>
 					<div>
-						<span class="label">créé le <%= directory.created_at.strftime("%m-%e-%y %H:%M") %>
+						<span class="label">créé le <%= directory.created_at.strftime("%e-%m-%y %H:%M") %>
 						<% unless directory.created_at == directory.updated_at %>
-							<br/>modif. le <%= directory.updated_at.strftime("%m-%e-%y %H:%M") %>
+							<br/>modif. le <%= directory.updated_at.strftime("%e-%m-%y %H:%M") %>
 						<% end %>	
 						</span>
 					</div>
