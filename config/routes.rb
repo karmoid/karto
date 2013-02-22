@@ -2,7 +2,11 @@ Karto::Application.routes.draw do
   resources :directories do
     resources :directories
     resources :leafs
-    resources :lassos
+    resources :lassos do
+      member do
+        post 'acquire'
+       end 
+    end
   end
 
   resources :leafs

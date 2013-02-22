@@ -35,8 +35,13 @@
 					</div>
 				</div>	 
 			    <div class="span6">  
-			      <strong><%= lasso.note %></strong>
-			    </div>		    
+			      <%= raw(RedCloth.new(lasso.note).to_html) unless lasso.note.blank? %>
+			    </div>	
+			    <div>
+			    	<span class="label label-info">
+			    	<%= link_to raw(' <i class="icon-user icon-white"></i>'), [:acquire, lasso.directory, lasso], :method => :post %>
+			    	</span>
+			    </div>	    
 		    </div>
 		    <div class="row">
 				<table class="table table-bordered table-striped table-hover">
@@ -57,7 +62,7 @@
 					    	<td><%= l.note %></td>
 						</tr>
 					<% end %>
-					<% lasso.children.each do |l| %>
+					<% lasso.leafs.each do |l| %>
 						<tr>
 					    	<td><%= l.id %></td>
 					    	<td><%= l.name %></td>

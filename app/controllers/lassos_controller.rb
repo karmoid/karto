@@ -43,6 +43,27 @@ class LassosController < ApplicationController
 		end	
 	end
 
+	def acquire
+		directory_id = params[:directory_id]
+		@directory = Directory.find(directory_id)
+		unless @directory.nil?
+			@lasso = @directory.lassos.find(params[:id])
+		end	
+		@lasso.lassos << Lasso.where(:pin => true)
+		@lasso.leafs << Leaf.where(:pin => true)
+		# @lasso.save
+		@favs = []
+		@pins = []
+		@favs << Directory.where(:fav => true)
+		@pins << Directory.where(:pin => true)
+		@favs << Lasso.where(:fav => true)
+		@pins << Lasso.where(:pin => true)
+		@favs << Leaf.where(:fav => true)
+		@pins << Leaf.where(:pin => true)
+		render :action => :show
+	end
+
+
 	def update
 		@lasso = Lasso.find(params[:id])
 		respond_to do |format|
