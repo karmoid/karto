@@ -50,16 +50,16 @@
 				        <th>#</th>
 				        <th>Nom</th>
 				        <th>Description</th>
-				        <th>Note</th>
+				        <th></th>
 				      </tr>
 				    </thead>
 				    <tbody>
-					<% lasso.lassos.each do |l| %>
+					<% lasso.children.each do |l| %>
 						<tr>
 					    	<td><%= l.id %></td>
 					    	<td><%= l.name %></td>
 					    	<td><%= l.hr %></td>
-					    	<td><%= l.note %></td>
+					    	<td><%= link_to raw(' <i class="icon-remove"></i>'), [:detach, lasso, l], :method => :post %></td>
 						</tr>
 					<% end %>
 					<% lasso.leafs.each do |l| %>
@@ -67,7 +67,7 @@
 					    	<td><%= l.id %></td>
 					    	<td><%= l.name %></td>
 					    	<td><%= l.hr %></td>
-					    	<td><%= l.note %></td>
+					    	<td><%= link_to raw(' <i class="icon-remove"></i>'), [:detach, lasso, l], :method => :post %></td>
 						</tr>
 					<% end %>
 					</tbody>

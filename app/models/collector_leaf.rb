@@ -3,4 +3,5 @@ class CollectorLeaf < ActiveRecord::Base
 
   belongs_to :lasso
   belongs_to :leaf
+  
 end

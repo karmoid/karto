@@ -20,6 +20,17 @@ class LeafsController < ApplicationController
 		end	
 	end
 
+	def detach
+		lasso_id = params[:lasso_id]
+		@lasso = Lasso.find(lasso_id)
+		unless @lasso.nil?
+			@lasso.detach_leaf(params[:id])
+		end	
+		show
+		render :show
+	end
+
+
 	def create
 		directory_id = params[:directory_id] || -1
 		@directory = Directory.find(directory_id)

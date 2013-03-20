@@ -5,12 +5,24 @@ Karto::Application.routes.draw do
     resources :lassos do
       member do
         post 'acquire'
-       end 
+      end 
     end
   end
 
   resources :leafs
-  resources :lassos
+  resources :lassos do
+    resources :lassos do
+      member do
+        post 'detach'
+      end 
+    end 
+    resources :leafs do
+      member do
+        post 'detach'
+      end 
+    end 
+  end 
+
 
   get "welcome/index"
 
